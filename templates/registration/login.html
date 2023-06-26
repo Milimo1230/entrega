@@ -1,4 +1,6 @@
-{% extends 'partials/body.html' %} {% block contenido %}
+{% extends 'partials/body.html' %}
+{% block title %} Ingreso {% endblock %} 
+{% block contenido %}
 <style id="compiled-css" type="text/css">
   .password-icon {
     float: right;
@@ -65,53 +67,13 @@
           <a href="{% url 'registro' %}"
             ><button type="button" class="btn btn-outline-success">
               Registrar
-            </button></a
-          >
-            <div class="col-12 help-text"> {{error}} </div>
-          <!-- Ayuda  -->
-          <!-- Button trigger modal -->
-          <button
-            type="button"
-            class="btn btn-success"
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
-          >
+            </button></a>            
+          <a href="{% url 'ayuda' %}"
+          ><button data-bs-toggle="tooltip" data-bs-placement="top" title="Manual de Ayuda" type="button" class="btn btn-outline-info">
             Ayuda
-          </button>
-
-          <!-- Modal -->
-          <div
-            class="modal fade"
-            id="exampleModal"
-            tabindex="-1"
-            aria-labelledby="exampleModalLabel"
-            aria-hidden="true"
-          >
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Ayuda</h5>
-                  <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
-                </div>
-                <div class="modal-body">
-                  Este formulario da ingreso al sistema
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-primary"
-                    data-bs-dismiss="modal"
-                  >
-                    Cerrar
-                  </button>
-                </div>
-              </div>
-            </div>
+          </button></a>           
+            <div class="col-12 help-text"> {{error}} </div>
+          <!-- Ayuda  -->            
           </div>
         </form>
       </div>

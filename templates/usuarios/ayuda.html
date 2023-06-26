@@ -1,0 +1,13 @@
+{% extends 'partials/body.html' %}
+{% block title %} Ayuda {% endblock %}
+{% load static %}
+{% block contenido %}
+  <center><h4>Ayuda</h4></center>
+    <div class="col-xl-12" align="center">
+        <figure class="figure" style="border-color: #000;">
+          <form name="frm_eliminarcer" id="frm_eliminarcer" method="POST">
+            <iframe src="{% static 'doc/ayuda.pdf' %}" width="1100" height="540"> </iframe>
+         </form>
+      </figure> 
+    </div>
+{% endblock contenido %}

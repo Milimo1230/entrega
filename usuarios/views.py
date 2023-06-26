@@ -128,3 +128,7 @@ def logout_view(reques):
     logout(reques)
     messages.success(reques, 'Sesión cerrada exitosamente')
     return redirect('login')
+
+
+def ayuda(request):
+    return render(request, 'usuarios/ayuda.html')

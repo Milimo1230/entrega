@@ -1,18 +1,28 @@
 {% extends 'partials/body.html' %}
 {% load static %}
+{% block title %} ¿Quienes somos? {% endblock %}
 {% block contenido %}
-<div class="container my-5">
-    <div class="bg-light p-5 rounded">
-      <img src="{% static 'img/logo.png' %}" width="400" height="341" class="rounded float-start" alt="...">
-      <div class="col-sm-8 py-5 mx-auto">        
-        <h1 class="display-5 fw-normal">Asoarte</h1>
-        <p class="fs-5">¡Bienvenido a nuestra comunidad de artesanos!.
-          Nosotros somos Asoarte, asociacion de artesanos del atlántico, nuestra comunidad reúne a talentosos artistas y artesanos de diferentes disciplinas, desde joyería, ensartado, cerámica, tejido, bordaje y hasta esculturas.
-          <p class="fs-5">Explora nuestro espacio virtual donde podrás descubrir piezas únicas y auténticas creadas con amor y dedicación para ti, cada artesanía es tradicional de nuestras tierras, donde cada objeto cuenta una historia y refleja la singularidad de su creador.
-        <p>
-          <a class="btn btn-primary" href="/docs/5.2/components/navbar/#offcanvas" role="button">Leer más »</a>
-        </p>
-    </div>
+<section id="about" class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <img src="{% static 'img/logo.png'%}" alt="Logo de la empresa" class="img-fluid">
+      </div>
+      <div class="col-md-6">
+        <h2 class="display-4">¡Bienvenido a nuestra comunidad de artesanos!</h2>
+        <p class="lead">Nosotros somos Asoarte, la Asociación de Artesanos del Atlántico. Nuestra comunidad reúne a talentosos artistas y artesanos de diferentes disciplinas, desde joyería, ensartado, cerámica, tejido, bordado y hasta esculturas.</p>
+        <p class="lead">En Asoarte, valoramos y promovemos el arte tradicional colombiano, transmitiendo técnicas ancestrales y preservando el legado cultural de nuestra región. Cada uno de nuestros artesanos es un maestro en su campo,
+           dedicado a la creación de piezas únicas y con una habilidad innata para plasmar la belleza en cada detalle.</p>
+        <p class="lead">Nuestros artistas utilizan materiales locales y sostenibles para sus creaciones, incorporando elementos de la naturaleza y técnicas artesanales auténticas. 
+          Cada pieza que sale de nuestras manos lleva consigo la historia y la pasión de nuestro pueblo, reflejando la riqueza de nuestra cultura y el amor por nuestro oficio.</p>
+        <p class="lead">En nuestra comunidad, fomentamos la colaboración y el intercambio de conocimientos entre los artesanos, creando un espacio donde cada uno puede aprender de los demás y enriquecer su propia práctica.
+           También organizamos exposiciones y eventos para dar a conocer el talento de nuestros miembros, conectando con amantes del arte y coleccionistas que aprecian la autenticidad y la originalidad de nuestras obras.</p>
+        <p class="lead">Si eres un amante del arte, te invitamos a explorar nuestro catálogo y descubrir las maravillas que nuestros artesanos han creado con sus manos.
+           Cada compra que realices en nuestra comunidad de Asoarte es una inversión en el trabajo arduo y la creatividad de nuestros talentosos artistas, contribuyendo a preservar nuestro patrimonio cultural y a apoyar a las comunidades artesanales locales.</p>
+        <p class="fs-5">¡Únete a nuestra comunidad de artesanos y adéntrate en el fascinante mundo de la artesanía colombiana!</p>
+        <a class="btn btn-dark" href="{% url 'logout' %}">Unirme</a>
+      </div>
     </div>
   </div>
+</section>
 {% endblock contenido %}
