@@ -11,6 +11,7 @@
 <html>
     <head>
       <title>{% block title %}   {% endblock %}</title> 
+      <style>{% block style %}   {% endblock %}</style> 
     </head>
     <body class"text-muted"  style="color: #000013; background-color:antiquewhite">
       <nav class=" text-muted navbar navbar-expand-lg navbar-light bg-light">
@@ -30,33 +31,31 @@
                   {% else %}
                   <li class="nav-item"  data-bs-toggle="tooltip" data-bs-placement="top" title="Ingresa a la tienda"><a href="{% url 'login' %}" class="nav-link"><i class="fa-solid fa-user"></i> Ingresar</a>                    
                 {% endif %}
-                </ul>
-              </div>
-            </nav>         
-          <div>
-            {% block contenido %}
+              </ul>
+            </div>              
+      </nav>
+      <div>                   
+           {% block contenido %}
           
-            {% endblock %}
+           {% endblock %}
             <br />
             <br />
-            <br />
-          </div>    
-        </div>
-      </body>
-<div class="container">
-
-</div>
-  <footer class="fixed-bottom footer bg-dark text-light py-4">
-    <div class="container text-center">
-      <div class="social-icons">
-        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <br />              
       </div>
-      <span>&copy; 2023 Company, ASOARTE STORE, Inc. Reservados todos los derechos.</span>
-    </div>    
-  </footer>
-</div>
+      </body>
+      <footer class="footer bg-dark text-light py-4">
+        <div class="container text-center">
+          <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          </div>
+          <span>&copy; 2023 Company, ASOARTE STORE, Inc. Reservados todos los derechos.</span>
+        </div>    
+      </footer>
+      
+  
+<script>{% block script %}   {% endblock %}</script> 
 <script src="https://kit.fontawesome.com/78987424cc.js" crossorigin="anonymous"></script>
 </html>
 

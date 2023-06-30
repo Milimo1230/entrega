@@ -1,9 +1,24 @@
 {% extends 'partials/body.html' %}
 {% load static %}
 {% block title %} ¿Quienes somos? {% endblock %}
+{% block style %}
+#btn-back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 35px;
+  display: none;
+}
+{% endblock %}
 {% block contenido %}
+<!-- Back to top button -->
+<button type="button" class="btn btn btn-outline-danger " id= "btn-back-to-top" >
+  <i class="fas fa-arrow-up"></i>  
+</button>
 <section id="about" class="py-5">
-  <div class="container">
+  <div class="container" >
     <div class="row">
       <div class="col-md-6">
         <img src="{% static 'img/logo.png'%}" alt="Logo de la empresa" class="img-fluid">
@@ -20,9 +35,37 @@
         <p class="lead">Si eres un amante del arte, te invitamos a explorar nuestro catálogo y descubrir las maravillas que nuestros artesanos han creado con sus manos.
            Cada compra que realices en nuestra comunidad de Asoarte es una inversión en el trabajo arduo y la creatividad de nuestros talentosos artistas, contribuyendo a preservar nuestro patrimonio cultural y a apoyar a las comunidades artesanales locales.</p>
         <p class="fs-5">¡Únete a nuestra comunidad de artesanos y adéntrate en el fascinante mundo de la artesanía colombiana!</p>
-        <a class="btn btn-dark" href="{% url 'logout' %}">Unirme</a>
+        <a class="btn btn-dark" href="{% url 'login' %}">Unirme</a>
       </div>
     </div>
   </div>
 </section>
 {% endblock contenido %}
+
+{% block script %}  
+//Get the button
+let mybutton = document.getElementById("btn-back-to-top");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function () {
+  scrollFunction();
+};
+
+function scrollFunction() {
+  if (
+    document.body.scrollTop > 20 ||
+    document.documentElement.scrollTop > 20
+  ) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+// When the user clicks on the button, scroll to the top of the document
+mybutton.addEventListener("click", backToTop);
+
+function backToTop() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+  {% endblock %}
