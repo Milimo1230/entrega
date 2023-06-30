@@ -5,6 +5,12 @@ from productos.carrito import Carrito
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 
+
+# funcion para mostrar el Inicio pagina Principal 
+def inicio(request):    
+    return render(request, "partials/inicio.html")
+
+# Funcion listar los productos boton catalogo pagina principal 
 @login_required
 def listar_producutos(request):
     busqueda = request.GET.get("buscar")
@@ -20,10 +26,6 @@ def tienda(request):
     productos = Producto.objects.all()
     return render(request, "productos/tienda.html", {'productos':productos})
 
-
-def inicio(request):    
-    return render(request, "partials/inicio.html")
-
 @login_required
 def agregar_producto(request, producto_id):
     carrito = Carrito(request)
@@ -36,6 +38,7 @@ def eliminar_producto(request, producto_id):
     producto = Producto.objects.get(cod_prod=producto_id)
     carrito.eliminar(producto)
     return redirect("Tienda")
+
 @login_required
 def restar_producto(request, producto_id):
     carrito = Carrito(request)
@@ -47,6 +50,7 @@ def limpiar_carrito(request):
     carrito = Carrito(request)
     carrito.limpiar()
     return redirect("Tienda")
+
 @login_required
 def guardar_carrito(request):
     carrito = Carrito(request)
