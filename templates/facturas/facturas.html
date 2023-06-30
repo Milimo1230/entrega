@@ -1,16 +1,31 @@
 {% extends 'partials/body.html' %}
- {% block title %} Facturas {% endblock %}
-  {% load static %} 
-  {% block contenido %} 
-  {% load crispy_forms_tags %}
+{% block title %} Facturas {% endblock %}
+{% load static %} 
+{% block pscript %}
+var fechaActual = new Date();
+        var fechaTexto = fechaActual.toLocaleDateString();
+
+        window.onload = function() {
+            document.getElementById('fecha').innerHTML = fechaTexto;
+        };
+
+function generarNumeroAleatorio() {
+  var numeroAleatorio = Math.floor(Math.random() * 1000000) + 10;
+  document.getElementById('numero').innerHTML = numeroAleatorio;
+}
+document.addEventListener('DOMContentLoaded', function() {
+  generarNumeroAleatorio();
+});
+{% endblock pscript %}
+{% block contenido %} 
 
 <div class="container">
   <div class="row">
     <div class="col">
       <p>Resumen de la orden</p>
-      <h4>Factura</h4>
-      <h4>Código de factura:</h4>
-      <h5>Fecha de pedido: {{ now }}</h5>
+      <h4>Factura</h4>      
+      <h4>Código de factura: <span id="numero"></span> </h4> 
+      <h5>Fecha de pedido: <span id="fecha"></span> </h5>
     </div>
     <div class="col order-5">
       <img
@@ -64,7 +79,6 @@
     </div>
   </div>    
 </div>
-
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -73,26 +87,58 @@
         <h5 class="modal-title" id="exampleModalLabel">Formulario para el envio factura</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-        <form>
-          <div class="mb-3">
-            <label for="nombre" class="form-label">Nombre:</label>
-            <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre">
-          </div>
-          <div class="mb-3">
-            <label for="email" class="form-label">Email:</label>
-            <input type="email" class="form-control" id="email" placeholder="Ingrese su email">
-          </div>
-          <!-- Agrega aquí los demás campos del formulario -->
-        </form>
+      <div class="modal-body">        
+              <!--Formulario-->  
+              <div class="row">
+                <div class="col-12">
+                  <div class="card">
+                    <div class="card-body ">                            
+                      <form class="row g-3" action="" method="POST">
+                        {% csrf_token %}
+                          <div class="col-12">
+                            <label for="name" class="form-label">Nombre y Apellido</label>
+                            {{ form.nombre }}
+                            {{ form.nombre.errors }}
+                          </div>
+                          <div class="col-12">
+                            <label for="email" class="form-label">Correo Electrónico</label>
+                            {{ form.email }}
+                            {{ form.email.errors }}
+                          </div>
+                          <div class="col-12">
+                            <label for="message" class="form-label">Detalles de Compra</label>
+                            <textarea id="message" name="message" class="form-control" readonly>
+{% for key, value in request.session.carrito.items %} Producto_id: {{value.producto_id}} Nombre: {{value.nombre}} Cantidad: {{value.cantidad}} Valor: $ {{value.valor |floatformat:2}}{%endfor%} Total: $ {{ total_carrito|floatformat:2 }}</textarea>
+                            {{ form.message.value }}
+                            {{ form.message.errors }}
+                          </div>
+                          &nbsp;
+                          <div class="col-12">
+                            <div class="d-flex justify-content-end">
+                              <a href="{% url 'factura' %}"><button type="button" class="btn btn-danger">Cancelar</button></a>
+                              &nbsp;
+                              <input class="btn btn-primary" type="submit" value="Enviar Mensaje" {% if 'ok' in request.GET %}disabled{% endif %}{% if 'error' in request.GET %}disabled{% endif %}>
+                            </div>
+                          </div>
+                      </form>
+                      {% if 'ok' in request.GET %}
+                      <div class="alert alert-success mt-5" role="alert">
+                          <strong>El mensaje se ha enviado correctamente</strong>
+                      </div>
+                  {% endif %}
+          
+                  {% if 'error' in request.GET %}
+                      <div class="alert alert-danger mt-5" role="alert">
+                          <strong>El mensaje no ha podido ser enviado. Por favor, intente más tarde</strong>
+                      </div>
+                  {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="submit" class="btn btn-primary">Enviar</button>
-      </div>
+
     </div>
   </div>
 </div>
-
-
 {% endblock contenido %}

@@ -12,6 +12,7 @@
     <head>
       <title>{% block title %}   {% endblock %}</title> 
       <style>{% block style %}   {% endblock %}</style> 
+      <script>{% block pscript %}  {% endblock pscript %}</script>
     </head>
     <body class"text-muted"  style="color: #000013; background-color:antiquewhite">
       <nav class=" text-muted navbar navbar-expand-lg navbar-light bg-light">
@@ -22,7 +23,7 @@
               </a>
               <ul class="nav">
                 <li class="nav-item"  data-bs-toggle="tooltip" data-bs-placement="top" title="Nuestra página principal"><a href="{% url 'inicio' %}" class="nav-link active" aria-current="page"><i class="fa-solid fa-home"></i> Inicio</a></li>
-                <li class="nav-item"  data-bs-toggle="tooltip" data-bs-placement="top" title="Aquí podrá ver nuestros productos"><a href="{% url 'Tienda' %}" class="nav-link"><i class="fa-solid fa-tachograph-digital"></i> Catálogo</a></li>        
+                <li class="nav-item"  data-bs-toggle="tooltip" data-bs-placement="top" title="Aquí podrá ver nuestros productos"><a href="{% url 'productos' %}" class="nav-link"><i class="fa-solid fa-tachograph-digital"></i> Catálogo</a></li>        
                 <li class="nav-item"  data-bs-toggle="tooltip" data-bs-placement="top" title="Comunícate con nosotros."><a href="{% url 'correo' %}" class="nav-link"><i class="fa-solid fa-person-chalkboard"></i> Contáctenos</a></li>
                 <li class="nav-item"  data-bs-toggle="tooltip" data-bs-placement="top" title="Conocenos"><a href="{% url 'Somos' %}" class="nav-link"><i class="fa-solid fa-book"></i> Sobre Nosotos</a></li>
                 {% if user.is_authenticated %}

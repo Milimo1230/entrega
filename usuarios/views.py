@@ -6,7 +6,6 @@ from django.template import Template, Context
 from django.views.generic import View 
 from django.contrib.auth import authenticate, login, logout
 from usuarios.forms import SignUpForm
-from django.contrib.auth.forms import UserCreationForm ,PasswordResetForm
 from django.contrib import messages
 from django.core.mail import EmailMessage
 from usuarios.forms import FormularioContacto, emailform 
@@ -45,9 +44,6 @@ class email(TemplateView, FormView):
                 # Ha habido un error y retorno a ERROR
                 return HttpResponseRedirect(self.success_url, messages.error(self.request, f'No se envio el mensaje'))
         return render(request, self.template_name, {'form': form})
-
-
-
 
 def contacto(request):
     formulario_contacto=FormularioContacto()

@@ -1,7 +1,7 @@
 from django.urls import path
-from .import views
+from facturas.views import FcontactoFactura, factura 
 
 urlpatterns = [
-    path('',views.factura,name="factura"),  
-      
+    path('', FcontactoFactura.as_view(), name='enviFactura'),      
+    path('factura', factura,name="factura"),  
 ]
