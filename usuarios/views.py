@@ -39,10 +39,10 @@ class email(TemplateView, FormView):
                 fail_silently=False,
             )
             try:
-                return HttpResponseRedirect(self.success_url, messages.success(self.request, f'se envio el mensaje'))
+                return HttpResponseRedirect(self.success_url, messages.success(self.request, f'se envío el mensaje'))
             except:
                 # Ha habido un error y retorno a ERROR
-                return HttpResponseRedirect(self.success_url, messages.error(self.request, f'No se envio el mensaje'))
+                return HttpResponseRedirect(self.success_url, messages.error(self.request, f'No se envío el mensaje'))
         return render(request, self.template_name, {'form': form})
 
 def contacto(request):

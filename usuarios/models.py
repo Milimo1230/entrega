@@ -1,9 +1,9 @@
 from django.db import models
 
 class Departamento(models.Model):
-	cod_depto = models.IntegerField(primary_key=True)
-	nombre_departamento = models.CharField(max_length=30, null=True, verbose_name="Departamento")
-	fecha_actualiza = models.DateTimeField()
+	cod_depto = models.IntegerField(primary_key=True, verbose_name="Codígo")
+	nombre_departamento = models.CharField(max_length=30,unique=True, null=True, verbose_name="Departamento")
+	fecha_actualiza = models.DateTimeField(verbose_name="Fecha de Actualización")
 
 	def __str__(self):
 		return'{}'.format(self.nombre_departamento)
@@ -18,16 +18,19 @@ class Municipio(models.Model):
 	def __str__(self):
 		return'{}'.format(self.nombre)
 	class Meta:
-		verbose_name_plural="Division Politica"
-		verbose_name="Division Politica"
+		verbose_name_plural="División Política"
+		verbose_name="División Política"
 
 class Categoria(models.Model):
-    cod_categoria = models.IntegerField(primary_key=True)
+    cod_categoria = models.IntegerField(primary_key=True, verbose_name="Código Categoría" )
     nombre = models.CharField(max_length=50)
-    descripcion = models.CharField(max_length=50)  
+    descripcion = models.CharField(max_length=50, verbose_name="Descripción" )  
 
     def __str__(self):
-        return'{}'.format(self.nombre) 
+        return'{}'.format(self.nombre)
+    class Meta:
+        verbose_name_plural="Categoría"
+        verbose_name="Categoría"
     
 
 

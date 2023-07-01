@@ -14,7 +14,9 @@ class Producto(models.Model):
 
     def __str__(self):
         return'{}'.format(self.nombre)
-
+    class Meta:
+            verbose_name_plural="Productos Asoarte"
+            verbose_name="Producto Asoarte"
      
     
 
@@ -25,6 +27,10 @@ class Devolucion(models.Model):
     motivo = models.CharField(max_length=150, blank=True, null=True)
     estado = models.BooleanField()
     fecha = models.DateTimeField()
+    class Meta:
+                verbose_name_plural="Devolución"
+                verbose_name="Devolución"
+
 
     
     

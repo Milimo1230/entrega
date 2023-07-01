@@ -11,8 +11,8 @@ class AdminMunicipios(ImportExportModelAdmin, admin.ModelAdmin):
         model = Municipio
 
 class AdminDepartamento(ImportExportModelAdmin, admin.ModelAdmin):
-    list_display = ["nombre_departamento"]
-    search_fields = ["nombre_departamento"]
+    list_display = ["nombre_departamento", "cod_depto"]
+    search_fields = ["nombre_departamento", "cod_depto"]
     class Meta:
         model = Departamento
 
