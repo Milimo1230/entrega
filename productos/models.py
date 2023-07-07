@@ -7,7 +7,8 @@ class Producto(models.Model):
     referencia = models.CharField(max_length=30, blank=True, null=True, verbose_name='Referencia Imagen')
     imagen = models.ImageField(upload_to="productos", null=True)
     cantidad = models.IntegerField(blank=True)
-    valor_compra = models.IntegerField(blank=True, null=True, verbose_name='Valor de compra')
+    valor_compra = models.IntegerField(blank=True, null=True, 
+    verbose_name='Valor de compra')
     valor_venta = models.IntegerField(blank=True, null=True, verbose_name='Valor de venta')
     fecha_actualiza = models.DateTimeField(auto_now_add=True)
 
